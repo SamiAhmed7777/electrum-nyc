@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: Electrum-NYC
-Version: 3.3.4
+Version: 1.0.0
 Summary: Lightweight NewYorkCoin Wallet
 Home-page: https://www.newyorkcoin.org/
 Author: The NewYorkCoin developers; based on Electrum by Thomas Voegtlin and Electrum-DOGE by The Electrum-DOGE contributors
@@ -10,6 +10,6 @@ Description: Lightweight NewYorkCoin Wallet
 Platform: UNKNOWN
 Requires-Python: >=3.6.1
 Provides-Extra: fast
+Provides-Extra: full
 Provides-Extra: gui
 Provides-Extra: hardware
-Provides-Extra: full
