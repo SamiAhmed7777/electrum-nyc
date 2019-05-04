@@ -12,7 +12,7 @@ else:
 
 PYHOME = 'c:/python3'
 
-home = 'C:\\electrum-nmc\\'
+home = 'C:\\electrum-nyc\\'
 
 # see https://github.com/pyinstaller/pyinstaller/issues/2005
 hiddenimports = []
@@ -38,12 +38,12 @@ binaries += [b for b in collect_dynamic_libs('PyQt5') if 'qwindowsvista' in b[0]
 binaries += [('C:/tmp/libsecp256k1.dll', '.')]
 
 datas = [
-    (home+'electrum_nmc/*.json', 'electrum_nmc'),
-    (home+'electrum_nmc/wordlist/english.txt', 'electrum_nmc/wordlist'),
-    (home+'electrum_nmc/locale', 'electrum_nmc/locale'),
-    (home+'electrum_nmc/plugins', 'electrum_nmc/plugins'),
+    (home+'electrum_nyc/*.json', 'electrum_nyc'),
+    (home+'electrum_nyc/wordlist/english.txt', 'electrum_nyc/wordlist'),
+    (home+'electrum_nyc/locale', 'electrum_nyc/locale'),
+    (home+'electrum_nyc/plugins', 'electrum_nyc/plugins'),
     ('C:\\Program Files (x86)\\ZBar\\bin\\', '.'),
-    (home+'electrum_nmc/gui/icons', 'electrum_nmc/gui/icons'),
+    (home+'electrum_nyc/gui/icons', 'electrum_nyc/gui/icons'),
 ]
 datas += collect_data_files('trezorlib')
 datas += collect_data_files('safetlib')
@@ -52,23 +52,23 @@ datas += collect_data_files('keepkeylib')
 datas += collect_data_files('ckcc')
 
 # We don't put these files in to actually include them in the script but to make the Analysis method scan them for imports
-a = Analysis([home+'run_electrum_nmc',
-              home+'electrum_nmc/gui/qt/main_window.py',
-              home+'electrum_nmc/gui/text.py',
-              home+'electrum_nmc/util.py',
-              home+'electrum_nmc/wallet.py',
-              home+'electrum_nmc/simple_config.py',
-              home+'electrum_nmc/bitcoin.py',
-              home+'electrum_nmc/dnssec.py',
-              home+'electrum_nmc/commands.py',
-              home+'electrum_nmc/plugins/cosigner_pool/qt.py',
-              home+'electrum_nmc/plugins/email_requests/qt.py',
-              home+'electrum_nmc/plugins/trezor/qt.py',
-              home+'electrum_nmc/plugins/safe_t/client.py',
-              home+'electrum_nmc/plugins/safe_t/qt.py',
-              home+'electrum_nmc/plugins/keepkey/qt.py',
-              home+'electrum_nmc/plugins/ledger/qt.py',
-              home+'electrum_nmc/plugins/coldcard/qt.py',
+a = Analysis([home+'run_electrum_nyc',
+              home+'electrum_nyc/gui/qt/main_window.py',
+              home+'electrum_nyc/gui/text.py',
+              home+'electrum_nyc/util.py',
+              home+'electrum_nyc/wallet.py',
+              home+'electrum_nyc/simple_config.py',
+              home+'electrum_nyc/bitcoin.py',
+              home+'electrum_nyc/dnssec.py',
+              home+'electrum_nyc/commands.py',
+              home+'electrum_nyc/plugins/cosigner_pool/qt.py',
+              home+'electrum_nyc/plugins/email_requests/qt.py',
+              home+'electrum_nyc/plugins/trezor/qt.py',
+              home+'electrum_nyc/plugins/safe_t/client.py',
+              home+'electrum_nyc/plugins/safe_t/qt.py',
+              home+'electrum_nyc/plugins/keepkey/qt.py',
+              home+'electrum_nyc/plugins/ledger/qt.py',
+              home+'electrum_nyc/plugins/coldcard/qt.py',
               #home+'packages/requests/utils.py'
               ],
              binaries=binaries,
@@ -116,11 +116,11 @@ exe_standalone = EXE(
     a.scripts,
     a.binaries,
     a.datas, 
-    name=os.path.join('build\\pyi.win32\\electrum-nmc', cmdline_name + ".exe"),
+    name=os.path.join('build\\pyi.win32\\electrum-nyc', cmdline_name + ".exe"),
     debug=False,
     strip=None,
     upx=False,
-    icon=home+'electrum_nmc/gui/icons/electrum_nmc.ico',
+    icon=home+'electrum_nyc/gui/icons/electrum_nyc.ico',
     console=False)
     # console=True makes an annoying black box pop up, but it does make Electrum output command line commands, with this turned off no output will be given but commands can still be used
 
@@ -129,11 +129,11 @@ exe_portable = EXE(
     a.scripts,
     a.binaries,
     a.datas + [ ('is_portable', 'README.md', 'DATA' ) ],
-    name=os.path.join('build\\pyi.win32\\electrum-nmc', cmdline_name + "-portable.exe"),
+    name=os.path.join('build\\pyi.win32\\electrum-nyc', cmdline_name + "-portable.exe"),
     debug=False,
     strip=None,
     upx=False,
-    icon=home+'electrum_nmc/gui/icons/electrum_nmc.ico',
+    icon=home+'electrum_nyc/gui/icons/electrum_nyc.ico',
     console=False)
 
 #####
@@ -143,11 +143,11 @@ exe_dependent = EXE(
     pyz,
     a.scripts,
     exclude_binaries=True,
-    name=os.path.join('build\\pyi.win32\\electrum-nmc', cmdline_name),
+    name=os.path.join('build\\pyi.win32\\electrum-nyc', cmdline_name),
     debug=False,
     strip=None,
     upx=False,
-    icon=home+'electrum_nmc/gui/icons/electrum_nmc.ico',
+    icon=home+'electrum_nyc/gui/icons/electrum_nyc.ico',
     console=False)
 
 coll = COLLECT(
@@ -158,6 +158,6 @@ coll = COLLECT(
     strip=None,
     upx=True,
     debug=False,
-    icon=home+'electrum_nmc/gui/icons/electrum_nmc.ico',
+    icon=home+'electrum_nyc/gui/icons/electrum_nyc.ico',
     console=False,
-    name=os.path.join('dist', 'electrum-nmc'))
+    name=os.path.join('dist', 'electrum-nyc'))

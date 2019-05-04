@@ -22,7 +22,7 @@ cache:
     - /tmp/electrum-build
 script:
     - tox
-    - ./contrib/check_nmc_rebranding
+    - ./contrib/check_nyc_rebranding
 after_success:
     - if [ "$TRAVIS_BRANCH" = "master" ]; then pip install requests && contrib/make_locale; fi
     - coveralls
@@ -40,7 +40,7 @@ jobs:
       install:
         - sudo docker build --no-cache -t electrum-wine-builder-img ./contrib/build-wine/docker/
       script:
-        - sudo docker run --name electrum-wine-builder-cont -v $PWD:/opt/wine64/drive_c/electrum-nmc --rm --workdir /opt/wine64/drive_c/electrum-nmc/contrib/build-wine electrum-wine-builder-img ./build.sh
+        - sudo docker run --name electrum-wine-builder-cont -v $PWD:/opt/wine64/drive_c/electrum-nyc --rm --workdir /opt/wine64/drive_c/electrum-nyc/contrib/build-wine electrum-wine-builder-img ./build.sh
       after_success: true
     - name: "Android build"
       language: python
@@ -53,7 +53,7 @@ jobs:
       install:
         - pip install requests && ./contrib/make_locale
         - ./contrib/make_packages
-        - sudo docker build --no-cache -t electrum-android-builder-img electrum_nmc/gui/kivy/tools
+        - sudo docker build --no-cache -t electrum-android-builder-img electrum_nyc/gui/kivy/tools
       script:
         - sudo chown -R 1000:1000 .
         # Output something every minute or Travis kills the job
@@ -84,7 +84,7 @@ jobs:
       install:
         - sudo docker build --no-cache -t electrum-appimage-builder-img ./contrib/build-linux/appimage/
       script:
-        - sudo docker run --name electrum-appimage-builder-cont -v $PWD:/opt/electrum-nmc --rm --workdir /opt/electrum-nmc/contrib/build-linux/appimage electrum-appimage-builder-img ./build.sh
+        - sudo docker run --name electrum-appimage-builder-cont -v $PWD:/opt/electrum-nyc --rm --workdir /opt/electrum-nyc/contrib/build-linux/appimage electrum-appimage-builder-img ./build.sh
       after_success: true
     - stage: release check
       install:
